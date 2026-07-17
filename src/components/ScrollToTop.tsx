@@ -36,13 +36,13 @@ export default function ScrollToTop() {
         >
           {/* Progress ring */}
           <svg className="absolute inset-0 w-11 h-11 -rotate-90" viewBox="0 0 44 44">
-            <circle cx="22" cy="22" r="14" fill="white" stroke="#e4ddd3" strokeWidth="1.5" />
+            <circle cx="22" cy="22" r="14" fill="var(--surface)" stroke="var(--border)" strokeWidth="1.5" />
             <circle
               cx="22"
               cy="22"
               r="14"
               fill="none"
-              stroke="#16a34a"
+              stroke="var(--accent)"
               strokeWidth="2.5"
               strokeDasharray={circumference}
               strokeDashoffset={circumference - (progress / 100) * circumference}

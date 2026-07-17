@@ -10,7 +10,7 @@ const info = [
     label: "Email",
     value: "karnikzh@gmail.com",
     href: "mailto:karnikzh@gmail.com",
-    color: "text-green-700 bg-green-50 border-green-200",
+    color: "text-[var(--tint-green-fg)] bg-[var(--tint-green-bg)] border-[var(--tint-green-br)]",
   },
   {
     icon: MapPin,
@@ -33,7 +33,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="py-28 px-6" style={{ background: "var(--bg)" }} ref={ref}>
+    <section id="contact" className="py-16 sm:py-24 lg:py-28 px-5 sm:px-6" style={{ background: "var(--bg)" }} ref={ref}>
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
@@ -70,7 +70,7 @@ export default function Contact() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 bg-white border border-[var(--border)] rounded-xl p-4 hover:border-[var(--border-2)] hover:shadow-md transition-all group"
+                  className="flex items-center gap-4 bg-[var(--surface)] border border-[var(--border)] rounded-xl p-4 hover:border-[var(--border-2)] hover:shadow-md transition-all group"
                 >
                   <div className={`w-10 h-10 rounded-xl ${bg} ${border} border flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform`}>
                     <Icon size={16} className={color.split(" ")[0]} />
@@ -84,20 +84,20 @@ export default function Contact() {
             })}
 
             {/* Availability card */}
-            <div className="mt-2 rounded-xl p-5 border border-green-200 bg-[var(--accent-faint)]">
+            <div className="mt-2 rounded-xl p-5 border border-[var(--tint-green-br)] bg-[var(--accent-faint)]">
               <div className="flex items-center gap-2 mb-2">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--accent-2)]" />
                 </span>
-                <span className="text-green-800 font-bold text-sm">Available Now</span>
+                <span className="text-[var(--accent-3)] font-bold text-sm">Available Now</span>
               </div>
-              <p className="text-green-900/60 text-xs leading-relaxed">
+              <p className="text-[var(--text-muted)] text-xs leading-relaxed">
                 Open to AI/ML roles, freelance AI projects, and research collaborations.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {["Full-time", "Freelance", "Research"].map(t => (
-                  <span key={t} className="px-2.5 py-1 rounded-lg bg-green-100 border border-green-200 text-[10px] font-bold text-green-700 uppercase tracking-wider">
+                  <span key={t} className="px-2.5 py-1 rounded-lg bg-[var(--tint-green-bg)] border border-[var(--tint-green-br)] text-[10px] font-bold text-[var(--tint-green-fg)] uppercase tracking-wider">
                     {t}
                   </span>
                 ))}

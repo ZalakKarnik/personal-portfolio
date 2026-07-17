@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { label: "About",      href: "#about" },
@@ -41,8 +42,8 @@ export default function Navbar() {
       {/* Pill nav */}
       <div
         className={`w-full max-w-3xl transition-all duration-500 ${
-          scrolled
-            ? "bg-white/85 backdrop-blur-xl border border-[var(--border)] shadow-[0_4px_24px_rgba(24,21,18,0.10)] rounded-2xl"
+          scrolled || open
+            ? "bg-[var(--nav-scrolled)] backdrop-blur-xl border border-[var(--border)] shadow-[var(--shadow-md)] rounded-2xl"
             : "bg-transparent rounded-2xl"
         }`}
       >
@@ -75,18 +76,25 @@ export default function Navbar() {
           </ul>
 
           {/* CTA */}
-          <a href="#contact" className="hidden md:inline-flex btn-accent text-xs px-4 py-2">
-            Hire Me ↗
-          </a>
+          <div className="hidden md:flex items-center gap-1">
+            <ThemeToggle />
+            <a href="#contact" className="btn-accent text-xs px-4 py-2">
+              Hire Me ↗
+            </a>
+          </div>
 
           {/* Mobile toggle */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-2)] transition-all"
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="md:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              onClick={() => setOpen(!open)}
+              className="w-11 h-11 flex items-center justify-center rounded-lg text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-2)] transition-all"
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </nav>
 
         {/* Mobile menu */}

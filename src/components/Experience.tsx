@@ -51,7 +51,7 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="experience" className="py-28 px-6 section-alt" ref={ref}>
+    <section id="experience" className="py-16 sm:py-24 lg:py-28 px-5 sm:px-6 section-alt" ref={ref}>
       <div className="max-w-5xl mx-auto">
 
         {/* Header */}
@@ -72,16 +72,16 @@ export default function Experience() {
         {/* Two-column labels */}
         <div className="hidden md:grid md:grid-cols-2 gap-6 mb-6 px-4">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-green-100 border border-green-200 flex items-center justify-center">
-              <Briefcase size={13} className="text-green-700" />
+            <div className="w-7 h-7 rounded-lg bg-[var(--tint-green-bg)] border border-[var(--tint-green-br)] flex items-center justify-center">
+              <Briefcase size={13} className="text-[var(--tint-green-fg)]" />
             </div>
-            <span className="text-xs font-semibold text-green-700 uppercase tracking-widest">Work Experience</span>
+            <span className="text-xs font-semibold text-[var(--tint-green-fg)] uppercase tracking-widest">Work Experience</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center">
-              <GraduationCap size={13} className="text-stone-600" />
+            <div className="w-7 h-7 rounded-lg bg-[var(--tint-neut-bg)] border border-[var(--tint-neut-br)] flex items-center justify-center">
+              <GraduationCap size={13} className="text-[var(--tint-neut-fg)]" />
             </div>
-            <span className="text-xs font-semibold text-stone-500 uppercase tracking-widest">Education</span>
+            <span className="text-xs font-semibold text-[var(--tint-neut-fg)] uppercase tracking-widest">Education</span>
           </div>
         </div>
 
@@ -108,8 +108,8 @@ export default function Experience() {
                 {/* Card */}
                 <div className={isLeft ? "" : "md:col-start-2"}>
                   <div
-                    className={`bg-white rounded-2xl border p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ${
-                      isWork ? "border-[var(--border)] hover:border-green-200" : "border-[var(--border)] hover:border-stone-300"
+                    className={`bg-[var(--surface)] rounded-2xl border p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ${
+                      isWork ? "border-[var(--border)] hover:border-[var(--tint-green-br)]" : "border-[var(--border)] hover:border-[var(--border-2)]"
                     }`}
                   >
                     {/* Top row */}
@@ -117,14 +117,16 @@ export default function Experience() {
                       <div className="flex items-center gap-2.5">
                         <div
                           className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                            isWork ? "bg-green-50 border border-green-200" : "bg-stone-50 border border-stone-200"
+                            isWork
+                              ? "bg-[var(--tint-green-bg)] border border-[var(--tint-green-br)]"
+                              : "bg-[var(--tint-neut-bg)] border border-[var(--tint-neut-br)]"
                           }`}
                         >
-                          <Icon size={14} className={isWork ? "text-green-700" : "text-stone-500"} />
+                          <Icon size={14} className={isWork ? "text-[var(--tint-green-fg)]" : "text-[var(--tint-neut-fg)]"} />
                         </div>
                         <div>
                           <h3 className="text-sm font-bold text-[var(--text)] leading-tight">{item.role}</h3>
-                          <p className={`text-xs font-semibold ${isWork ? "text-green-700" : "text-stone-500"}`}>
+                          <p className={`text-xs font-semibold ${isWork ? "text-[var(--tint-green-fg)]" : "text-[var(--tint-neut-fg)]"}`}>
                             {item.company}
                           </p>
                         </div>
@@ -132,8 +134,8 @@ export default function Experience() {
                       <span
                         className={`text-[10px] px-2 py-0.5 rounded-full font-semibold shrink-0 border ${
                           isWork
-                            ? "bg-green-50 text-green-700 border-green-200"
-                            : "bg-stone-50 text-stone-500 border-stone-200"
+                            ? "bg-[var(--tint-green-bg)] text-[var(--tint-green-fg)] border-[var(--tint-green-br)]"
+                            : "bg-[var(--tint-neut-bg)] text-[var(--tint-neut-fg)] border-[var(--tint-neut-br)]"
                         }`}
                       >
                         {item.highlight}
@@ -163,11 +165,11 @@ export default function Experience() {
                 {/* Center dot — desktop */}
                 <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-5 z-10">
                   <div
-                    className={`w-5 h-5 rounded-full border-2 bg-white flex items-center justify-center ${
-                      isWork ? "border-green-500" : "border-stone-400"
+                    className={`w-5 h-5 rounded-full border-2 bg-[var(--surface)] flex items-center justify-center ${
+                      isWork ? "border-[var(--accent)]" : "border-[var(--border-3)]"
                     }`}
                   >
-                    <Icon size={9} className={isWork ? "text-green-600" : "text-stone-500"} />
+                    <Icon size={9} className={isWork ? "text-[var(--accent-2)]" : "text-[var(--tint-neut-fg)]"} />
                   </div>
                 </div>
               </motion.div>

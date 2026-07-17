@@ -9,15 +9,15 @@ const values = [
     icon: Brain,
     title: "LLM & RAG Systems",
     desc: "End-to-end RAG pipelines with hybrid retrieval — BM25, vector search, and reranking.",
-    iconColor: "text-green-700",
-    iconBg: "bg-green-100",
+    iconColor: "text-[var(--tint-green-fg)]",
+    iconBg: "bg-[var(--tint-green-bg)]",
   },
   {
     icon: Database,
     title: "Search & Data",
     desc: "Elasticsearch, SQL, Redis, BigQuery — scalable data pipelines and intelligent retrieval.",
-    iconColor: "text-teal-700",
-    iconBg: "bg-teal-100",
+    iconColor: "text-[var(--tint-teal-fg)]",
+    iconBg: "bg-[var(--tint-teal-bg)]",
   },
   {
     icon: Rocket,
@@ -47,7 +47,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-28 px-6" style={{ background: "var(--bg)" }} ref={ref}>
+    <section id="about" className="py-16 sm:py-24 lg:py-28 px-5 sm:px-6" style={{ background: "var(--bg)" }} ref={ref}>
       <div className="max-w-6xl mx-auto">
 
         {/* Section header */}
@@ -83,18 +83,18 @@ export default function About() {
                 {/* Top visual */}
                 <div
                   className="h-40 relative flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%)" }}
+                  style={{ background: "var(--avatar-grad)" }}
                 >
                   {/* Decorative rings */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 rounded-full border border-green-200/60 opacity-60" />
-                    <div className="absolute w-48 h-48 rounded-full border border-green-100/40 opacity-40" />
+                    <div className="w-32 h-32 rounded-full border border-[var(--tint-green-br)]/60 opacity-60" />
+                    <div className="absolute w-48 h-48 rounded-full border border-[var(--tint-green-br)]/40 opacity-40" />
                   </div>
                   <div className="relative text-7xl select-none leading-none">🤖</div>
                 </div>
 
                 {/* Info */}
-                <div className="p-6 bg-white">
+                <div className="p-6 bg-[var(--surface)]">
                   <div className="text-center mb-5">
                     <h3 className="text-lg font-bold text-[var(--text)] mb-0.5">Zalak Karnik</h3>
                     <p className="text-sm text-[var(--text-muted)]">AI Engineer · Casepoint</p>
@@ -159,24 +159,24 @@ export default function About() {
             </div>
 
             {/* Open to Work */}
-            <div className="mt-7 rounded-xl border border-green-200 bg-[var(--accent-faint)] p-4">
+            <div className="mt-7 rounded-xl border border-[var(--tint-green-br)] bg-[var(--accent-faint)] p-4">
               <div className="flex items-center gap-2 mb-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-2)]" />
                 </span>
-                <span className="text-xs font-bold text-green-800 uppercase tracking-widest">Open to Work</span>
+                <span className="text-xs font-bold text-[var(--accent-3)] uppercase tracking-widest">Open to Work</span>
               </div>
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {["Gujarat", "Mumbai / Pune", "Bangalore", "Hyderabad"].map(region => (
-                  <span key={region} className="px-2.5 py-1 rounded-lg bg-white border border-green-200 text-[11px] font-semibold text-green-800">
+                  <span key={region} className="px-2.5 py-1 rounded-lg bg-[var(--surface)] border border-[var(--tint-green-br)] text-[11px] font-semibold text-[var(--tint-green-fg)]">
                     📍 {region}
                   </span>
                 ))}
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {["Remote", "Hybrid", "On-site"].map(mode => (
-                  <span key={mode} className="px-2.5 py-1 rounded-lg bg-green-100 border border-green-200 text-[11px] font-semibold text-green-700 uppercase tracking-wide">
+                  <span key={mode} className="px-2.5 py-1 rounded-lg bg-[var(--tint-green-bg)] border border-[var(--tint-green-br)] text-[11px] font-semibold text-[var(--tint-green-fg)] uppercase tracking-wide">
                     {mode}
                   </span>
                 ))}
@@ -193,7 +193,7 @@ export default function About() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 + i * 0.09 }}
-              className="group rounded-xl p-5 border border-[var(--border)] bg-white hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+              className="group rounded-xl p-5 border border-[var(--border)] bg-[var(--surface)] hover:shadow-md hover:-translate-y-1 transition-all duration-300"
             >
               <div className={`w-10 h-10 rounded-xl ${iconBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <Icon size={18} className={iconColor} />

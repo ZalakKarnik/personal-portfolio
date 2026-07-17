@@ -18,7 +18,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] py-14 px-6" style={{ background: "var(--bg-2)" }}>
+    <footer className="border-t border-[var(--border)] py-12 sm:py-14 px-5 sm:px-6" style={{ background: "var(--bg-2)" }}>
       <div className="max-w-6xl mx-auto">
 
         {/* Top row */}
@@ -62,7 +62,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 bg-white border border-[var(--border)] rounded-xl flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-green-200 hover:-translate-y-0.5 transition-all shadow-sm"
+                  className="w-9 h-9 bg-[var(--surface)] border border-[var(--border)] rounded-xl flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--tint-green-br)] hover:-translate-y-0.5 transition-all shadow-sm"
                 >
                   <Icon size={15} />
                 </a>
@@ -74,16 +74,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom row */}
-        <div className="border-t border-[var(--border)] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-[var(--border)] pt-8 flex flex-row flex-wrap items-center justify-between gap-4">
           <p className="text-xs text-[var(--text-faint)] flex items-center gap-1.5">
             Built with <Heart size={11} className="text-[var(--accent)] fill-[var(--accent)]" /> by Zalak Karnik &mdash; {new Date().getFullYear()}
           </p>
-          <p className="text-xs text-[var(--text-faint)]">Next.js · TypeScript · Tailwind CSS · Framer Motion</p>
+          <p className="hidden md:block text-xs text-[var(--text-faint)]">Next.js · TypeScript · Tailwind CSS · Framer Motion</p>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Back to top"
-            className="w-8 h-8 rounded-lg bg-white border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-green-200 transition-all shadow-sm hover:-translate-y-0.5"
+            className="w-8 h-8 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--tint-green-br)] transition-all shadow-sm hover:-translate-y-0.5"
           >
             <ArrowUp size={14} />
           </button>

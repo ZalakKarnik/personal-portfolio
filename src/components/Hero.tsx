@@ -63,8 +63,8 @@ export default function Hero() {
         style={{ background: "radial-gradient(circle, rgba(217,119,6,0.07) 0%, transparent 70%)" }}
       />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pt-28 pb-16">
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-12 items-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 pt-28 pb-20 sm:pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_340px] gap-10 lg:gap-12 items-center">
 
           {/* ── Left column ── */}
           <div>
@@ -89,7 +89,7 @@ export default function Hero() {
               transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <p className="text-sm text-[var(--text-muted)] font-medium mb-2 tracking-wide">Hi, I&apos;m</p>
-              <h1 className="font-display text-6xl md:text-7xl lg:text-8xl text-[var(--text)] leading-[0.92] mb-6">
+              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[var(--text)] leading-[0.92] mb-6">
                 Zalak<br />
                 <em className="gradient-text not-italic">Karnik</em>
               </h1>
@@ -141,7 +141,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.75 }}
-              className="flex flex-wrap items-center gap-6"
+              className="flex flex-wrap items-center gap-x-6 gap-y-4"
             >
               <div className="flex items-center gap-2">
                 {[
@@ -154,14 +154,14 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="w-9 h-9 rounded-lg border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--accent)] hover:text-[var(--accent)] text-[var(--text-muted)] flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-green)]"
+                    className="w-11 h-11 sm:w-9 sm:h-9 rounded-lg border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--accent)] hover:text-[var(--accent)] text-[var(--text-muted)] flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-green)]"
                   >
                     <Icon size={16} />
                   </a>
                 ))}
               </div>
 
-              <div className="w-px h-6 bg-[var(--border)]" />
+              <div className="hidden sm:block w-px h-6 bg-[var(--border)]" />
 
               {/* Quick stats inline */}
               <div className="flex items-center gap-5">
@@ -180,7 +180,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ delay: 0.55, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden xl:block"
+            className="hidden lg:block"
           >
             <motion.div
               animate={{ y: [0, -14, 0] }}

@@ -2,6 +2,8 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
+
   --bg:           #f7f5f0;
   --bg-2:         #f0ece4;
   --bg-3:         #e8e2d8;
@@ -22,6 +24,30 @@
   --gold:         #d97706;
   --gold-light:   #fef3c7;
 
+  /* Values hardcoded in component classes / rgba() need theme-aware tokens */
+  --nav-scrolled:   rgba(255,255,255,0.85);
+  --dot-color:      rgba(180,172,162,0.5);
+  --badge-green-br: #bbf7d0;
+  --noise-opacity:  0.04;
+
+  --btn-primary-bg:       #181512;
+  --btn-primary-bg-hover: #3d3630;
+  --btn-primary-fg:       #ffffff;
+
+  /* Semantic pairs: green = work/highlighted, neutral = education/secondary */
+  --tint-green-bg: #f0fdf4;
+  --tint-green-br: #bbf7d0;
+  --tint-green-fg: #15803d;
+  --tint-teal-bg:  #f0fdfa;
+  --tint-teal-br:  #99f6e4;
+  --tint-teal-fg:  #0f766e;
+  --tint-neut-bg:  #fafaf9;
+  --tint-neut-br:  #e7e5e4;
+  --tint-neut-fg:  #78716c;
+  --avatar-grad:   linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%);
+  --metric-badge-bg: rgba(255,255,255,0.8);
+  --project-header-veil: 0;
+
   --font-display: 'Instrument Serif', Georgia, serif;
   --font-body:    'DM Sans', -apple-system, sans-serif;
   --font-mono:    'DM Mono', 'Fira Code', monospace;
@@ -37,6 +63,57 @@
   --shadow-green: 0 4px 24px rgba(22,163,74,0.14);
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:           #14120f;
+  --bg-2:         #1c1916;
+  --bg-3:         #26221e;
+  --surface:      #1a1714;
+  --surface-2:    #211d19;
+  --border:       #2e2924;
+  --border-2:     #443d35;
+  --border-3:     #5c534a;
+  --text:         #f5f1ea;
+  --text-2:       #ddd6cb;
+  --text-muted:   #9c9186;
+  --text-faint:   #6b6259;
+  --accent:       #4ade80;
+  --accent-2:     #22c55e;
+  --accent-3:     #86efac;
+  --accent-light: #14532d;
+  --accent-faint: #17301f;
+  --gold:         #fbbf24;
+  --gold-light:   #422006;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.40), 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.46), 0 2px 6px rgba(0,0,0,0.34);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.40);
+  --shadow-green: 0 4px 24px rgba(74,222,128,0.16);
+
+  --nav-scrolled:   rgba(26,23,20,0.85);
+  --dot-color:      rgba(120,110,100,0.4);
+  --badge-green-br: #14532d;
+  --noise-opacity:  0.02;
+
+  --btn-primary-bg:       #f5f1ea;
+  --btn-primary-bg-hover: #ddd6cb;
+  --btn-primary-fg:       #14120f;
+
+  --tint-green-bg: #16301f;
+  --tint-green-br: #1f5133;
+  --tint-green-fg: #6ee7a0;
+  --tint-teal-bg:  #12302e;
+  --tint-teal-br:  #1a5250;
+  --tint-teal-fg:  #5eead4;
+  --tint-neut-bg:  #232019;
+  --tint-neut-br:  #3a342c;
+  --tint-neut-fg:  #a8a096;
+  --avatar-grad:   linear-gradient(135deg, #16301f 0%, #1a4030 50%, #14302c 100%);
+  --metric-badge-bg: rgba(20,18,15,0.72);
+  --project-header-veil: 0.86;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -48,6 +125,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Suppress transitions during theme swap so the whole page flips at once */
+:root[data-theme-switching] * {
+  transition: none !important;
 }
 
 ::-webkit-scrollbar { width: 4px; }
@@ -100,9 +183,28 @@ body {
   background: var(--bg-2);
 }
 
+/* Project card headers use per-project pastel gradients that would glare on a dark
+   page. Fade the gradient itself against the card surface, leaving content alone. */
+.project-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--surface);
+  opacity: var(--project-header-veil, 0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Keep the emoji and badges above the veil */
+.project-header > * {
+  position: relative;
+  z-index: 2;
+}
+
 /* ── Backgrounds ── */
 .dot-bg {
-  background-image: radial-gradient(circle, rgba(180,172,162,0.5) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
@@ -117,7 +219,8 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: var(--noise-opacity);
   pointer-events: none;
   border-radius: inherit;
 }
@@ -137,7 +240,7 @@ body {
 
 .badge-green {
   background: var(--accent-faint);
-  border: 1px solid #bbf7d0;
+  border: 1px solid var(--badge-green-br);
   color: var(--accent-3);
 }
 
@@ -162,7 +265,7 @@ body {
 
 .tag:hover {
   background: var(--accent-faint);
-  border-color: #bbf7d0;
+  border-color: var(--badge-green-br);
   color: var(--accent-3);
 }
 
@@ -173,8 +276,8 @@ body {
   gap: 8px;
   padding: 11px 22px;
   border-radius: var(--radius-md);
-  background: var(--text);
-  color: #fff;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -182,12 +285,12 @@ body {
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(24,21,18,0.18);
+  box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover {
-  background: var(--text-2);
+  background: var(--btn-primary-bg-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(24,21,18,0.22);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -243,7 +346,7 @@ body {
   padding: 4px 14px;
   border-radius: 99px;
   background: var(--accent-faint);
-  border: 1px solid #bbf7d0;
+  border: 1px solid var(--badge-green-br);
   color: var(--accent-3);
   font-size: 11px;
   font-weight: 700;

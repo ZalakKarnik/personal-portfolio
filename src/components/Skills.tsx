@@ -47,9 +47,21 @@ const techStack = [
 ];
 
 const accentMap: Record<string, { text: string; light: string; pill: string }> = {
-  green: { text: "text-green-700", light: "bg-green-100", pill: "bg-green-50 border-green-200 text-green-800" },
-  teal:  { text: "text-teal-700",  light: "bg-teal-100",  pill: "bg-teal-50 border-teal-200 text-teal-800"   },
-  stone: { text: "text-stone-600", light: "bg-stone-100", pill: "bg-stone-50 border-stone-200 text-stone-700" },
+  green: {
+    text:  "text-[var(--tint-green-fg)]",
+    light: "bg-[var(--tint-green-br)]",
+    pill:  "bg-[var(--tint-green-bg)] border-[var(--tint-green-br)] text-[var(--tint-green-fg)]",
+  },
+  teal: {
+    text:  "text-[var(--tint-teal-fg)]",
+    light: "bg-[var(--tint-teal-br)]",
+    pill:  "bg-[var(--tint-teal-bg)] border-[var(--tint-teal-br)] text-[var(--tint-teal-fg)]",
+  },
+  stone: {
+    text:  "text-[var(--tint-neut-fg)]",
+    light: "bg-[var(--tint-neut-br)]",
+    pill:  "bg-[var(--tint-neut-bg)] border-[var(--tint-neut-br)] text-[var(--tint-neut-fg)]",
+  },
 };
 
 export default function Skills() {
@@ -57,7 +69,7 @@ export default function Skills() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="py-28 px-6 section-alt" ref={ref}>
+    <section id="skills" className="py-16 sm:py-24 lg:py-28 px-5 sm:px-6 section-alt" ref={ref}>
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
@@ -84,7 +96,7 @@ export default function Skills() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: ci * 0.12 }}
-                className="bg-white rounded-2xl p-6 border border-[var(--border)] hover:shadow-md transition-shadow"
+                className="bg-[var(--surface)] rounded-2xl p-6 border border-[var(--border)] hover:shadow-md transition-shadow"
               >
                 {/* Category header */}
                 <div className="flex items-center gap-3 mb-6">
@@ -115,7 +127,7 @@ export default function Skills() {
         >
           {[
             { label: "AWS Academy Cloud Foundation", year: "2022", emoji: "☁️", color: "border-amber-200 bg-amber-50 text-amber-800" },
-            { label: "Amazon ML School",             year: "2024", emoji: "🏆", color: "border-green-200 bg-green-50 text-green-800" },
+            { label: "Amazon ML School",             year: "2024", emoji: "🏆", color: "border-[var(--tint-green-br)] bg-[var(--tint-green-bg)] text-[var(--tint-green-fg)]" },
           ].map(({ label, year, emoji, color }) => (
             <div
               key={label}
@@ -148,8 +160,8 @@ export default function Skills() {
                 transition={{ delay: 0.55 + i * 0.025 }}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium cursor-default transition-all duration-200 hover:-translate-y-0.5 ${
                   tech.hot
-                    ? "bg-[var(--accent-faint)] border border-green-200 text-[var(--accent-3)] hover:shadow-[var(--shadow-green)]"
-                    : "bg-white border border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--border-2)]"
+                    ? "bg-[var(--accent-faint)] border border-[var(--tint-green-br)] text-[var(--accent-3)] hover:shadow-[var(--shadow-green)]"
+                    : "bg-[var(--surface)] border border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--border-2)]"
                 }`}
               >
                 <span className="text-sm leading-none">{tech.emoji}</span>
