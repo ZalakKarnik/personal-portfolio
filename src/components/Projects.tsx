@@ -6,6 +6,36 @@ import { GithubIcon } from "./SocialIcons";
 
 const projects = [
   {
+    title: "AI Multi-Agent Financial Research Platform",
+    description:
+      "Turns a single NSE/BSE ticker into a full equity research report, orchestrating 11 specialized agents across fundamentals, valuation, news, competitors, and risk — every figure computed deterministically with source traceability.",
+    tags: ["Python", "Multi-Agent", "FastAPI", "React"],
+    category: "LLM / RAG",
+    emoji: "📊",
+    metric: "11 agents orchestrated",
+    org: "Personal",
+    orgColor: "bg-[var(--tint-neut-bg)] text-[var(--tint-neut-fg)] border-[var(--tint-neut-br)]",
+    headerGradient: "from-blue-50 via-indigo-50 to-sky-50",
+    accentColor: "#2563eb",
+    github: "",
+    live: "https://ai-finance-research-woad.vercel.app/",
+  },
+  {
+    title: "Chat with Multiple PDFs (Gemini RAG Chatbot)",
+    description:
+      "Streamlit chatbot to upload and query multiple PDFs in natural language, using PyPDF2 extraction, chunking, and FAISS vector search for fast, context-aware answers.",
+    tags: ["LangChain", "Google Gemini", "FAISS", "Streamlit"],
+    category: "LLM / RAG",
+    emoji: "📄",
+    metric: "Multi-PDF Q&A",
+    org: "Personal",
+    orgColor: "bg-[var(--tint-neut-bg)] text-[var(--tint-neut-fg)] border-[var(--tint-neut-br)]",
+    headerGradient: "from-rose-50 via-pink-50 to-orange-50",
+    accentColor: "#e11d48",
+    github: "",
+    live: "",
+  },
+  {
     title: "RAG Pipeline — E-Discovery & FOIA",
     description:
       "End-to-end RAG system enabling Text-to-SQL querying, and automated document summarization. Reduced irrelevant outputs by 40%.",
